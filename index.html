@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mopro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Style for the loading screen */
+        #loading-screen {
+          position: fixed;
+          top: 70%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+        }
+  
+        /* Style for the spinner animation */
+        #spinner {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          border: 5px solid #ccc;
+          border-top-color: #333;
+          animation: spinner 1s linear infinite;
+        }
+  
+        /* Spinner animation */
+        @keyframes spinner {
+          to {
+            transform: rotate(360deg);
+          }
+        }
+  
+        /* Style for the content */
+        #content {
+          margin-top: 50px;
+          text-align: center;
+        }
+        @media (min-width: 768px){
+        .container{
+          width: 20%;
+          margin: auto;
+          margin-top: 5em;
+        }
+          
+        }
+      </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 512 512"><path fill="currentColor" d="M256 41.875c-60.562 0-60.547 15.14-75.688 60.563l-30.28 90.843l41.624 41.626c16.44-16.44 39.26-26.47 64.344-26.47c25.085 0 47.904 10.03 64.344 26.47l41.625-41.625l-30.283-90.843c-15.14-45.42-15.125-60.562-75.687-60.562zm0 196.844c-33.447 0-60.563 27.083-60.563 60.53s27.116 60.563 60.563 60.563s60.563-27.116 60.563-60.563s-27.116-60.53-60.563-60.53zm-144.78 21.75l-63.532 71.655C15.92 367.947 2.813 375.52 33.093 427.97c30.28 52.447 43.406 44.88 90.312 35.28l93.813-19.22l15.218-56.874c-22.457-6.017-42.552-20.744-55.094-42.47c-12.544-21.723-15.267-46.51-9.25-68.967l-56.875-15.25zm289.56 0l-56.874 15.25c6.017 22.455 3.293 47.243-9.25 68.967c-12.542 21.725-32.637 36.452-55.094 42.47l15.22 56.874l93.812 19.22c46.906 9.6 60.03 17.167 90.312-35.28c30.28-52.45 17.173-60.023-14.594-95.845l-63.53-71.656z"/></svg>
+            <h1>PhoVid</h1>
+        </div>
+        <div id="loading-screen">
+          <div id="spinner"></div>
+        </div>
+    </div>
+    <script>
+        // Show the loading screen for 3 seconds
+        setTimeout(function() {
+          // Redirect to the next page
+          window.location.href = "signin.html";
+        }, 3000);
+      </script>
+</body>
+</html>

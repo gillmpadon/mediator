@@ -11,13 +11,12 @@ html,body{
     margin: auto;
     text-align: center;
     width: 90%;
-    margin-top: 1em;
 }
 /* head */
 .head{
  display: flex;
  justify-content: space-between;
- 
+ align-items: center;
 }
 
   /*  Exit Button */
@@ -31,8 +30,8 @@ html,body{
     align-items: center;
 }
 .exitBtn svg{
-    height: 24px;
-    width: 24px;
+    height: 15px;
+    width: 15px;
 }
 
 /* images */
@@ -53,7 +52,7 @@ html,body{
 .dashboard{
     background-color: #20232D;
     border-radius: 1em;
-    padding: 1em;
+    padding: .5em;
     width: 90%;
     margin: auto;
     text-align: center;

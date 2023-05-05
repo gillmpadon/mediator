@@ -9,8 +9,8 @@ html,body{
 .container{
     margin: auto;
     text-align: center;
-    margin-top: 10%;
-    width: 90%;
+    margin-top: 1em;
+    width: 100%;
     color: white;
 
 }
@@ -19,29 +19,44 @@ html,body{
 .headerDiv{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin: auto;
+
 }
 .right{
     display: flex;
     width: 25%;
     justify-content: space-between;
+    height: 1.5em;
+    align-items: center;
 }
 
 .settingsDiv{
     background-color: gray;
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     border-radius: 3em;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: .3em;
 }
+.settingsDiv {
+    margin-right: .5em;
+}
+.settingsDiv svg{
+    height: 15px;
+}
 
 /* create now */
 .createNow{
     display: flex;
-    justify-content: space-between;
-    height: 5em;
+    justify-content: space-around;
+    height: 3em;
+    margin-top: .5em;
+    width: 100%;
+    
 }
 .upload{
     width: 65%;
@@ -64,36 +79,41 @@ html,body{
 .head {
     text-align: left;
     line-height: 0;
+    font-size: 1em;
 }
 /* entry tools */
 .entryTools{
     display: flex;
     justify-content: space-around;
-
+    align-items: center;
+    height: 5em;
+    margin-bottom: 2em;
+    width: 100%;
 }
 
 .entry{
     width: 23%;
-    height: 10em;
     line-height: 0;
+    height: 100%;
+    
 }
 .entry p{
     text-align: left;
+    font-size: .7em;
 }
 
 .entryDiv{
-    height: 8em;
+    height: 100%;
 }
 .entryDiv img{
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-radius: 1em;
-    border: 1px solid white;
 }
 .icon{
-    width: 2em;
-    height: 2em;
+    width: 1em;
+    height: 1em;
     background-color: #20232D;
     position: absolute;
     margin: .3em 0 0 .3em;
@@ -114,23 +134,30 @@ html,body{
     background-color: #20232D;
     height: 4em;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
+    width: 100%;
+    margin-top: -.5em;
 }
 
 .navEntry{
     line-height: 0;
+    border: 1px solid white;
+   
 }
 
 .navEntry svg{
-    height: 32px;
-    width: 32px;
+    height: 20px;
+    width: 20px;
 }
 
 .navEntry p{
-    font-size: .8em;
+    font-size: .6em;
 }
 
+h2{
+    font-size: 1.2em;
+}
 
 @media (min-width: 708px ){
     .container{

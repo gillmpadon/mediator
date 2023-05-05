@@ -1,0 +1,125 @@
+html,body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #16181F;
+    color: white;
+    overflow: hidden;
+}
+.container{
+    margin: auto;
+    text-align: center;
+    width: 100%;
+}
+
+.container h2{
+    text-align: left;
+    margin-left: 1em;
+}
+
+/* head */
+.head{
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    align-items: center;
+
+}
+
+
+  /*  Exit Button */
+#exitBtn{
+    background-color: gray;
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1em;
+}
+#exitBtn svg{
+    height: 15px;
+    width: 15px;
+}
+
+/* dashboard */
+.dashboard{
+    overflow: auto;
+    height: 30em;
+    width: 100%;
+}
+
+/* entry */
+.entry{
+    height: 7em;
+    background-color: #20232D;
+    display: flex;
+    width: 85%;
+    margin: auto;
+    padding: .5em;
+    margin-bottom: 1em;
+}
+.images{
+    width: 33%;
+    height: 100%;
+}
+.images img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1em;
+}
+.info{
+    width: 70%;
+    height: 100%;
+}
+.info h2{
+    font-size: 1.2em;
+}
+
+.info-time{
+    display: flex;
+    align-items: center;
+    margin-left: 1em;
+    margin-top: -2.5em;
+}
+.info-time svg{
+    margin-right: .2em;
+}
+.info-time p{
+    font-size: .9em;
+}
+
+.view{
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    align-items: center;
+    margin-top: -1.5em;
+    width: 90%;
+}
+.view p{
+    background: #0D6EFD;
+    color:  #fff;
+    border-radius: .2em;
+    padding: .4em;
+    font-size: .8em;
+}
+
+.para{
+    margin: 0;
+    font-size: .9em;
+    width: 90%;
+    margin: auto;
+}
+@media (min-width: 708px ){
+    .container{
+        position: relative;
+        width: 25em;
+    }
+}
+
+
+
