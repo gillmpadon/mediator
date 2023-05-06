@@ -1,0 +1,90 @@
+html,body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #16181F;
+    color: #7D848D;
+}
+.container{
+    margin: auto;
+    text-align: center;
+    width: 90%;
+}
+.container video{
+    height: 100%;
+    width: 100%;
+}
+
+/* INFO */
+.info{
+    overflow: auto;
+    height: 24em;
+
+}
+.info::-webkit-scrollbar {
+    display: none;
+  }
+.images{
+    height: 20em;
+    width: 100%;
+
+}
+.images img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1em;
+}
+
+.time{
+    margin: 0;
+}
+.time h2{
+    font-size: 2em;
+    text-transform: uppercase;
+}
+.time p{
+    font-size: 1.5em;
+    width: 70%;
+    margin: auto;
+}
+
+.description p{
+    font-size: 1.2em;
+    text-align: justify;
+    text-indent: 2em;
+}
+.description {
+    margin-bottom: 2em;
+}
+@media (min-width: 708px ){
+    .container{
+        position: relative;
+        width: 25em;
+    }
+}
+
+.head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .5em;
+}
+
+ /*  Exit Button */
+ .exitBtn{
+    background-color: gray;
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.exitBtn svg{
+    height: 15px;
+    width: 15px;
+}
+
+

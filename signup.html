@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Uo</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="signin.css">
-    
+    <style>
+      #creates{
+        position: relative;
+        top: 2em;
+        font-size: .7em;
+        display: flex;
+        justify-content: center;
+      }
+    </style>    
 </head>
 <body>
 
@@ -19,13 +27,42 @@
         </div>
           <p>Please fill the details and create account</p>
         <form action="">
-            <input type="text" name="name" id="" placeholder="Enter full name">
-            <input type="email" name="email" id="" placeholder="Enter email">
-            <input type="password" name="password" id="" placeholder="Enter password">
+            <input type="text" name="name" id="fname" placeholder="Enter first name" required>
+            <input type="email" name="email" id="email" placeholder="Enter email" required>
+            <input type="password" name="password" id="password" placeholder="Enter password" required>
         </form>
         <button id="myBtn" >Sign Up</button>
       
     </div>
+    <a href="signin.html" id="creates">Already Have Account? Login now</a>
+    <script>
+      const btn = document.getElementById('myBtn')
+      const input = document.getElementById('password')
+      input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        btn.click();
+      }});
 
+      btn.addEventListener('click', () =>{
+      const fname = document.getElementById('fname').value
+      const email = document.getElementById('email').value
+      const password = document.getElementById('password').value
+      
+      const account = {
+        fname: fname,
+        lname: "Unknown",
+        mi: "Unknown",
+        password: password,
+        email: email,
+        number: "09123456789",
+        photo: "default.png"
+
+      }
+
+      localStorage.setItem("user", JSON.stringify(account));
+      localStorage.setItem("photo", account.photo);
+      window.location.href = 'home.html';
+      })
+    </script>
 </body>
 </html>

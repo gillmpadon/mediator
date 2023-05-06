@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="profile.css">
     
 </head>
@@ -21,9 +21,9 @@
       </div>
         
       <div class="images">
-        <img src="img/1.jpg" alt="">
-        <h2>Gintoki Sakata</h2>
-        <p>gintokisakata@gmail.com</p>
+        <img id="image" src="user_img/women.jpg" alt="">
+        <h2 id="fullname">Gintoki Sakata</h2>
+        <p id="email">gintokisakata@gmail.com</p>
       </div>
       
       <div class="dashboard">
@@ -47,7 +47,7 @@
           <p>Light Mode</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M9.4 18L8 16.6l4.6-4.6L8 7.4L9.4 6l6 6l-6 6Z"/></svg>
         </div>
-        <div class="entry" onclick="window.location.href='logout.js'">
+        <div class="entry" onclick="window.location.href='logout.html'">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10s-4.477 10-10 10ZM7 11V8l-5 4l5 4v-3h8v-2H7Z"/></svg>
           <p>Logout</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M9.4 18L8 16.6l4.6-4.6L8 7.4L9.4 6l6 6l-6 6Z"/></svg>
@@ -55,6 +55,16 @@
       </div>
 
     </div>
-
+    <script>
+      const user = JSON.parse(localStorage.getItem("user"))
+      const photos = localStorage.getItem("photo")
+      const fullname = document.getElementById("fullname")
+      const email = document.getElementById("email")
+      const photo =   document.getElementById("image")
+      fullname.textContent = `${user.fname} ${user.mi}. ${user.lname}`
+      email.textContent = `${user.email}`
+      
+      photo.src = `user_img/${photos}`
+    </script>
 </body>
 </html>

@@ -6,7 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
     <link rel="stylesheet" href="signin.css">
-    
+    <style>
+      #create{
+        position: relative;
+        top: 2em;
+        font-size: .7em;
+        display: flex;
+        justify-content: center;
+      }
+    </style>
 </head>
 <body>
 
@@ -18,14 +26,93 @@
           <h2>Sign in now</h2>
         </div>
           <p>Please sign in to continue our app</p>
-        <form action="">
-            <input type="text" name="name" id="" placeholder="Enter email">
-            <input type="password" name="password" id="" placeholder="Enter email">
-        </form>
+          <p id="result"></p>
+            <input type="text" name="name" id="name" placeholder="Enter Username">
+            <input type="password" name="password" id="password" placeholder="Enter Password">
         <a href="forgot.html" id="forgot">Forgot Password?</a>
-        <button id="myBtn" ><a href="home.html">Sign in</a></button>
-      
+        <button type="submit" name="submit" id="myBtn" >Sign in</button>
+       
     </div>
+    <a href="signup.html" id="create">Don't Have Account? Create now</a>
+      
 
+    <script>
+      const account = [
+        {
+          fname: "Gintoki",
+          mi: "P",
+          lname: "Sakata",
+          password: 12345,
+          email: "gintokisakata@gmail.com",
+          number: "+639707281718",
+          photo: "user_0.jpg"
+        },
+        {
+          fname: "Gilbert",
+          lname: "Guleng",
+          mi : "C",
+          password: 12345,
+          email: "gilbertpogs187@gmail.com",
+          number: "09467044906",
+          photo: "user_1.jpg"
+        },
+        {
+          fname: "Mark Francis",
+          lname: "Yanquiling",
+          mi: "T",
+          password: 12345,
+          email: "yanquilingmf@gmail.com",
+          number: "09487923072",
+          photo: "user_2.jpg"
+        },
+        {
+          fname: "Harold",
+          lname: "Dela Cruz",
+          mi: "C",
+          password: 12345,
+          email: "harolddelacruz450@gmail.com",
+          number: "09487896460",
+          photo: "user_3.jpg"
+        },
+        {
+          fname: "Jay-R",
+          lname: "Prado",
+          mi: "C",
+          password: 12345,
+          email: "pradojayr66@gmail.com",
+          number: "09207074125",
+          photo: "user_4.jpg"
+        },
+
+      ]
+
+      const input = document.getElementById('password')
+      const btn = document.getElementById('myBtn')
+
+      input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        btn.click();
+      }});
+      btn.addEventListener('click', () =>{
+      const name_user = document.getElementById('name')
+      const password_user = document.getElementById('password')
+      const result = document.getElementById('result')
+      for (var i = 0; i < account.length; i++) {
+      if (account[i].fname == name_user.value && account[i].password == password_user.value) {
+        window.location.href = 'home.html';
+        const photos = account[i].photo
+        localStorage.setItem("user", JSON.stringify(account[i]));
+        localStorage.setItem("photo", photos);
+        return; // exit the loop when the login is successful
+      }
+      } 
+
+      // if the loop finishes without finding a match
+      name_user.value = '';
+      password_user.value = '';
+      result.textContent = "User Not Found";
+
+      })
+    </script>
 </body>
 </html>

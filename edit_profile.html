@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
+    <title>Edit Profile</title>
     <link rel="stylesheet" href="edit_profile.css">
-    
+    <style>
+      body{
+        overflow: auto;
+      }
+      body::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
 </head>
 <body>
     <div class="container">
       <div class="head">
         <div class="exitBtn">
-          <svg onclick="window.history.back()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M15.125 21.1L6.7 12.7q-.15-.15-.213-.325T6.425 12q0-.2.062-.375T6.7 11.3l8.425-8.425q.35-.35.875-.35t.9.375q.375.375.375.875t-.375.875L9.55 12l7.35 7.35q.35.35.35.863t-.375.887q-.375.375-.875.375t-.875-.375Z"/></svg>
+          <svg onclick="window.location.href='home.html'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M15.125 21.1L6.7 12.7q-.15-.15-.213-.325T6.425 12q0-.2.062-.375T6.7 11.3l8.425-8.425q.35-.35.875-.35t.9.375q.375.375.375.875t-.375.875L9.55 12l7.35 7.35q.35.35.35.863t-.375.887q-.375.375-.875.375t-.875-.375Z"/></svg>
         </div>
         <p>Profile</p>
-        Done
+        <p id="Done">Done</p>
       </div>
         
       <div class="images">
-        <img src="img/1.jpg" alt="">
-        <h2>Gintoki Sakata</h2>
-        <a>Change Picture</a>
+        <img id=photo src="img/women.jpg" alt="image">
+        <h2 id="fullname">Gintoki Sakata</h2>
+        <a href="change_image.php">Change Picture</a>
       </div>
       
       <form action="">
@@ -29,7 +36,14 @@
         <div class="entry">
           <h3>First Name</h3>
           <div class="divEntry">
-            <input type="text" value="Gintoki">
+            <input type="text" id="fname">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="m10 16.4l-4-4L7.4 11l2.6 2.6L16.6 7L18 8.4l-8 8Z"/></svg>
+          </div>
+        </div>
+        <div class="entry">
+          <h3>Middle Initial</h3>
+          <div class="divEntry">
+            <input type="text" id="mi">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="m10 16.4l-4-4L7.4 11l2.6 2.6L16.6 7L18 8.4l-8 8Z"/></svg>
           </div>
         </div>
@@ -37,7 +51,7 @@
         <div class="entry">
           <h3>Last Name</h3>
           <div class="divEntry">
-            <input type="text" value="Gintoki">
+            <input type="text" id="lname">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="m10 16.4l-4-4L7.4 11l2.6 2.6L16.6 7L18 8.4l-8 8Z"/></svg>
           </div>
         </div>
@@ -45,7 +59,7 @@
         <div class="entry">
           <h3>Email</h3>
           <div class="divEntry">
-            <input type="text" value="Gintoki">
+            <input type="text" id="email">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="m10 16.4l-4-4L7.4 11l2.6 2.6L16.6 7L18 8.4l-8 8Z"/></svg>
           </div>
         </div>
@@ -53,7 +67,7 @@
         <div class="entry">
           <h3>Number</h3>
           <div class="divEntry">
-            <input type="text" value="Gintoki">
+            <input type="text" id="number">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="m10 16.4l-4-4L7.4 11l2.6 2.6L16.6 7L18 8.4l-8 8Z"/></svg>
           </div>
         </div>
@@ -62,6 +76,45 @@
 
       </form>
     </div>
-
+    <script>
+      const user = JSON.parse(localStorage.getItem("user"));
+      const photos = localStorage.getItem("photo");
+      const fullname = document.getElementById("fullname");
+      const fname = document.getElementById("fname");
+      const mi = document.getElementById("mi");
+      const lname = document.getElementById("lname");
+      const email = document.getElementById("email");
+      const number = document.getElementById("number");
+      const photo = document.getElementById("photo");
+      const doneBtn = document.getElementById("Done");
+    
+      // set initial values
+      fullname.textContent = `${user.fname} ${user.mi}. ${user.lname}`;
+      fname.value = user.fname;
+      mi.value = user.mi;
+      lname.value = user.lname;
+      number.value = user.number;
+      email.value = user.email;
+      photo.src = `user_img/${photos}`;
+    
+      doneBtn.addEventListener("click", function() {
+        user.fname = fname.value;
+        mi.value = user.mi;
+        user.lname = lname.value;
+        user.email = email.value;
+        user.number = number.value;
+        localStorage.setItem("user", JSON.stringify(user));
+        location.reload();
+      });
+    
+      const inputs = document.querySelectorAll("input");
+      inputs.forEach(input => {
+        input.addEventListener("change", function() {
+          user[input.id] = input.value;
+          location.reload();
+        });
+      });
+    </script>
+    
 </body>
 </html>

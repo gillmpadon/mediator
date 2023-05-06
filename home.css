@@ -80,6 +80,7 @@ html,body{
     text-align: left;
     line-height: 0;
     font-size: 1em;
+    margin-left: 1em;
 }
 /* entry tools */
 .entryTools{
@@ -87,8 +88,9 @@ html,body{
     justify-content: space-around;
     align-items: center;
     height: 5em;
+    margin: auto;
     margin-bottom: 2em;
-    width: 100%;
+    width: 95%;
 }
 
 .entry{
@@ -142,7 +144,6 @@ html,body{
 
 .navEntry{
     line-height: 0;
-    border: 1px solid white;
    
 }
 
