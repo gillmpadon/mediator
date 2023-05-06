@@ -71,7 +71,7 @@ html,body{
 .output{
     position: relative;
     width: 85%;
-    height: 66%;
+    height: 75%;
     margin: auto;
     margin-top: .3em;
 }
@@ -151,42 +151,6 @@ input[type=range] {
 @media (min-width: 708px ){
     .container{
         position: relative;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         width: 25em;
     }
 }

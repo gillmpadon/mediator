@@ -49,7 +49,7 @@ html,body{
 /* dashboard */
 .dashboard{
     overflow: auto;
-    height: 26em;
+    height: 30em;
     width: 100%;
 }
 .dashboard::-webkit-scrollbar {
