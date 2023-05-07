@@ -11,7 +11,9 @@ html,body{
     text-align: center;
     width: 100%;
     color: white;
-    margin-top: .6em
+    margin-top: .6em;
+    height: 100%;
+    overflow: hidden;
 }
 
   /*  Header  */
@@ -21,31 +23,30 @@ html,body{
     align-items: center;
     width: 95%;
     margin: auto;
-
+    height: 5%;
 }
 .right{
     display: flex;
-    width: 25%;
     justify-content: space-between;
-    height: 1.9em;
+    height: 100%;
     align-items: center;
+}
+.right p{
+    margin-left: .5em;
 }
 
 .settingsDiv{
     background-color: gray;
-    width: 1.5em;
-    height: 1.5em;
+    width: 2.3em;
+    height: 100%;
     border-radius: 3em;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: .3em;
 }
-.settingsDiv {
-    margin-right: .5em;
-}
+
 .settingsDiv svg{
-    height: 15px;
+    height: 20px;
 }
 
 /* create now */
@@ -86,7 +87,7 @@ html,body{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 6em;
+    height: 16%;
     margin: auto;
     margin-bottom: 2em;
     width: 95%;
@@ -113,8 +114,8 @@ html,body{
     border-radius: 1em;
 }
 .icon{
-    width: 1em;
-    height: 1em;
+    width: 2em;
+    height: 2em;
     background-color: #20232D;
     position: absolute;
     margin: .3em 0 0 .3em;
@@ -138,17 +139,16 @@ html,body{
     justify-content: space-around;
     align-items: center;
     width: 100%;
-    
+    padding: .5em;
 }
 
 .navEntry{
     line-height: 0;
-   
 }
 
 .navEntry svg{
-    height: 20px;
-    width: 20px;
+    height: 24px;
+    width: 24px;
 }
 
 .navEntry p{

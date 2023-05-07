@@ -24,9 +24,10 @@ html,body{
 .head{
     display: flex;
     justify-content: space-between;
-    width: 95%;
+    width: 90%;
     align-items: center;
-
+    margin: auto;
+    margin-top: 1em;
 }
 
 
@@ -39,7 +40,6 @@ html,body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 1em;
 }
 #exitBtn svg{
     height: 15px;
@@ -49,7 +49,7 @@ html,body{
 /* dashboard */
 .dashboard{
     overflow: auto;
-    height: 30em;
+    height: 39em;
     width: 100%;
 }
 .dashboard::-webkit-scrollbar {

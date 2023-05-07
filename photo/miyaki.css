@@ -9,8 +9,9 @@
 
 body {
 	min-height: 100vh;
-	width: 100vw;
-	
+	width: 100%;
+	display: flex;
+	align-items: center;
 	justify-content: center;
 	background: #17202A;
 }
@@ -29,17 +30,13 @@ body {
 /*Tools part*/
 .Tools {
 	height: 100%;
-	width: 100%;
-	border: 1px solid red;
+	width: 10%;
 	box-shadow: 0.1px 4px 8px 5px rgba(0, 0, 0, 0.1);
 	background: rgba(255, 255, 255, 0.05);
 }
 
 .Tools ul {
 	list-style: none;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .Tools ul li {
@@ -51,7 +48,6 @@ body {
 	flex-direction: column;
 	cursor: pointer;
 	transition: 0.4s;
-	border: 1px solid white;
 }
 
 .Tools ul .active_option {

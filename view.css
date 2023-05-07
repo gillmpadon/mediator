@@ -8,19 +8,22 @@ html,body{
 }
 .container{
     margin: auto;
+    margin-top: 1em;
     text-align: center;
     width: 90%;
+    height: 30%;
 }
 .container video{
     height: 100%;
     width: 100%;
+
 }
 
 /* INFO */
 .info{
     overflow: auto;
-    height: 24em;
-
+    height: 200%;
+    
 }
 .info::-webkit-scrollbar {
     display: none;
