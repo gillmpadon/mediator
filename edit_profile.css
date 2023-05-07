@@ -73,7 +73,7 @@ form{
     width: 100%;
     background-color: #20232D;
     justify-content: space-between;
-    height: 1.5em;
+    height: 2em;
     padding: .5em;
     border-radius: .5em;
 }
@@ -91,7 +91,7 @@ input:focus{
 }
 
 a{
-    color: blue;
+    color: #ffff;
     text-decoration: none;
 }
 @media (min-width: 708px ){

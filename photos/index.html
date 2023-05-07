@@ -9,47 +9,27 @@
       <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
    </head>
    <body>
-      <div class="main">
-         <div class="Tools">
-            <ul>
-               <li>
-                  <i class='bx bxs-brightness-half'></i>
-                  <p>BrightNess</p>
-               </li>
-               <li>
-                  <i class='bx bxs-brush' ></i>
-                  <p>Blur</p>
-               </li>
-               <li>
-                  <i class='bx bxs-collection' ></i>
-                  <p>GreyScale</p>
-               </li>
-               <li>
-                  <i class='bx bxs-color-fill' ></i>
-                  <p>Hue Rotate</p>
-               </li>
-               <li>
-                  <i class='bx bxs-magic-wand' ></i>
-                  <p>Saturation</p>
-               </li>
-               <li onclick="Download_btn()">
-                  <i class='bx bx-export' ></i>
-                  <p>Export</p>
-               </li>
-            </ul>
+      <div class="heads">
+         <div id="exitBtn">
+           <svg onclick="window.location.href='../home.html'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M6 21q-.825 0-1.413-.588T4 19v-9q0-.475.213-.9t.587-.7l6-4.5q.275-.2.575-.3T12 3.5q.325 0 .625.1t.575.3l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-4v-7h-4v7H6Z"/></svg>
          </div>
+         <div class="title">
+           <h2>PHOTO EDITOR</h2>
+           <h2 id="photo_name">IMAGE</h2>
+         </div>
+       </div>
+      <div class="main">
+        
          <div class="content">
-            <p id="logo">Photo Editor</p>
             <div class="choose_image">
                <div class="upload_img_box">
                   <i class='bx bxs-image-add' ></i><br>
                   <input type="file" name="selectedImage" id="selectedImage" accept="image/jpeg, image/png">
-                  <p id="hint">choose Image from folder</p>
+                  <p id="hint">Choose Image</p>
                </div>
             </div>
             <canvas id="image_canvas"></canvas>
             <div class="image_holder">
-               <button id="remove_img_btn"><i class='bx bxs-message-square-x' ></i></button>
                <img src="" alt="img" id="image">
             </div>
             <div class="options">
@@ -74,8 +54,40 @@
                   <p id="saturationVal" class="show_value">1</p>
                </div>
             </div>
-            <button id="clearAll"><span>Reset</span><i class='bx bx-reset' ></i></button>
+            <div class="mybtns">
+               <button id="remove_img_btn"><i class='bx bxs-message-square-x' ></i></button>
+               <button id="clearAll"><span>Reset</span><i class='bx bx-reset' ></i></button>
+
+            </div>
          </div>
+      </div>
+      <div class="Tools">
+         <ul>
+            <li>
+               <i class='bx bxs-brightness-half'></i>
+               <p>BrightNess</p>
+            </li>
+            <li>
+               <i class='bx bxs-brush' ></i>
+               <p>Blur</p>
+            </li>
+            <li>
+               <i class='bx bxs-collection' ></i>
+               <p>GreyScale</p>
+            </li>
+            <li>
+               <i class='bx bxs-color-fill' ></i>
+               <p>Hue Rotate</p>
+            </li>
+            <li>
+               <i class='bx bxs-magic-wand' ></i>
+               <p>Saturation</p>
+            </li>
+            <li onclick="Download_btn()">
+               <i class='bx bx-export' ></i>
+               <p>Export</p>
+            </li>
+         </ul>
       </div>
       <script src="scriptPhoto.js"></script>
    </body>

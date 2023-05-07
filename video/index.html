@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Video Editor</title>
+  </head>
+  <body>
+    <input type="file" id="videoInput" accept="video/*">
+    <video id="video" controls></video>
+    <br>
+    <button onclick="play()">Play</button>
+    <button onclick="pause()">Pause</button>
+    <br>
+    <input type="range" id="seekBar" min="0" max="100" value="0">
+    <br>
+    <input type="range" id="volumeBar" min="0" max="1" step="0.1" value="1">
+    <br>
+    <button onclick="mute()">Mute</button>
+    <button onclick="unmute()">Unmute</button>
+    <br>
+    <button onclick="setSpeed(0.5)">Slow</button>
+    <button onclick="setSpeed(1)">Normal</button>
+    <button onclick="setSpeed(2)">Fast</button>
+    <br>
+    <button onclick="setLoop(true)">Loop On</button>
+    <button onclick="setLoop(false)">Loop Off</button>
+    <br>
+    <button onclick="setTime(0)">Start</button>
+    <button onclick="setTime(video.duration)">End</button>
+    <br>
+    <button onclick="setBrightness(1.5)">Brightness Up</button>
+    <button onclick="setBrightness(1)">Brightness Normal</button>
+    <button onclick="setBrightness(0.5)">Brightness Down</button>
+    <br>
+    <button onclick="setContrast(1.5)">Contrast Up</button>
+    <button onclick="setContrast(1)">Contrast Normal</button>
+    <button onclick="setContrast(0.5)">Contrast Down</button>
+    <br>
+    <button onclick="setHue(90)">Hue Rotate</button>
+    <button onclick="setHue(0)">Hue Reset</button>
+    <br>
+    <button onclick="setSaturation(2)">Saturation Up</button>
+    <button onclick="setSaturation(1)">Saturation Normal</button>
+    <button onclick="setSaturation(0.5)">Saturation Down</button>
+    <br>
+    <script>
+      let videoInput = document.getElementById("videoInput");
+      let video = document.getElementById("video");
+      let seekBar = document.getElementById("seekBar");
+      let volumeBar = document.getElementById("volumeBar");
+
+      function play() {
+        video.play();
+      }
+
+      function pause() {
+        video.pause();
+      }
+
+      function mute() {
+        video.muted = true;
+      }
+
+      function unmute() {
+        video.muted = false;
+      }
+
+      function setSpeed(speed) {
+        video.playbackRate = speed;
+      }
+
+      function setLoop(loop) {
+        video.loop = loop;
+      }
+
+      function setTime(time) {
+        video.currentTime = time;
+      }
+
+      function setBrightness(value) {
+        video.style.filter = "brightness(" + value + ")";
+      }
+
+      function setContrast(value) {
+        video.style.filter = "contrast(" + value + ")";
+      }
+
+      function setHue(value) {
+  video.style.filter = "hue-rotate(" + value + "deg)";
+}
+
+function setSaturation(value) {
+  video.style.filter = "saturate(" + value + ")";
+}
+
+videoInput.addEventListener("change", function() {
+  const file = this.files[0];
+  const fileURL = URL.createObjectURL(file, { crossOrigin: "anonymous" });
+  video.src = fileURL;
+  video.onloadedmetadata = function() {
+    seekBar.max = video.duration;
+    volumeBar.value = video.volume;
+  }
+});
+
+seekBar.addEventListener("input", function() {
+  video.currentTime = seekBar.value;
+});
+
+volumeBar.addEventListener("input", function() {
+  video.volume = volumeBar.value;
+});
+
+video.addEventListener("timeupdate", function() {
+  seekBar.value = video.currentTime;
+});
+
+video.addEventListener("ended", function() {
+  video.currentTime = 0;
+  video.pause();
+});
+
+</script>
+</body>
+</html>
+

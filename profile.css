@@ -41,8 +41,8 @@ html,body{
     text-align: center;
 }
 .images img{
-    height: 10em;
-    width: 10em;
+    height: 15em;
+    width: 14em;
     object-fit: cover;
     border-radius: 20em;
 }

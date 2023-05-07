@@ -25,10 +25,14 @@ const context = canvas.getContext('2d');
 let File_Name;
 let Edited = false;
 
+remove_img_btn.style.display = "none";
+clearAll.style.display = "none"
 
+const filename = document.getElementById('photo_name')
 /*handle choose image event*/
 upload_img_box.addEventListener("click", function () {
    selectedImage.click();
+   
 });
 
 
@@ -39,6 +43,7 @@ selectedImage.addEventListener("change", function () {
    if (file) {
       const reader = new FileReader();
       File_Name = file.name;
+      filename.textContent = File_Name
 
       choose_image.style.display = "none";
       image_holder.style.display = "block";
@@ -49,10 +54,13 @@ selectedImage.addEventListener("change", function () {
 
       reader.readAsDataURL(file);
       remove_img_btn.style.display = "block";
+      clearAll.style.display = "block"
+
    }
 
    if (Edited == false) {
       Edited = true;
+    
    }
 
 })
@@ -92,7 +100,6 @@ function editImage() {
    image.style.filter = 'grayscale(' + greyVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) saturate(' + satuVal + ')';
    context.filter = 'grayscale(' + greyVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) saturate(' + satuVal + ')';
 
-   clearAll.style.transform = 'translateY(0px)';
 }
 
 
@@ -102,7 +109,7 @@ list_options.forEach((list_option, index) => {
 
 
       if (image.getAttribute('src') == "") {
-         alert("Choose Image First");
+         alert("Insert an Image");
       } else {
 
          options.style.transform = 'translateY(0px)';
@@ -124,7 +131,7 @@ list_options.forEach((list_option, index) => {
             }
 
          } else {
-            alert("Edit Your Image First");
+            alert("Edit Image");
          }
 
       }
@@ -173,15 +180,15 @@ function clearAllRangeValue() {
    }
 
    editImage();
-   clearAll.style.transform = 'translateY(150px)';
 }
 
 /*remove image btn click*/
 remove_img_btn.addEventListener("click", function () {
    image.src = "";
-   this.style.display = "none";
+   image.style = "none"
    choose_image.style.display = "block";
-   image_holder.style.display = "none";
-   options.style.transform = 'translateY(80px)';
+   clearAll.style.display='none';
+   remove_img_btn.style.display = "none"
    clearAllRangeValue();
+   window.location.reload();
 })
