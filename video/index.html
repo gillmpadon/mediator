@@ -1,126 +1,204 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>Video Editor</title>
-  </head>
-  <body>
-    <input type="file" id="videoInput" accept="video/*">
-    <video id="video" controls></video>
-    <br>
-    <button onclick="play()">Play</button>
-    <button onclick="pause()">Pause</button>
-    <br>
-    <input type="range" id="seekBar" min="0" max="100" value="0">
-    <br>
-    <input type="range" id="volumeBar" min="0" max="1" step="0.1" value="1">
-    <br>
-    <button onclick="mute()">Mute</button>
-    <button onclick="unmute()">Unmute</button>
-    <br>
-    <button onclick="setSpeed(0.5)">Slow</button>
-    <button onclick="setSpeed(1)">Normal</button>
-    <button onclick="setSpeed(2)">Fast</button>
-    <br>
-    <button onclick="setLoop(true)">Loop On</button>
-    <button onclick="setLoop(false)">Loop Off</button>
-    <br>
-    <button onclick="setTime(0)">Start</button>
-    <button onclick="setTime(video.duration)">End</button>
-    <br>
-    <button onclick="setBrightness(1.5)">Brightness Up</button>
-    <button onclick="setBrightness(1)">Brightness Normal</button>
-    <button onclick="setBrightness(0.5)">Brightness Down</button>
-    <br>
-    <button onclick="setContrast(1.5)">Contrast Up</button>
-    <button onclick="setContrast(1)">Contrast Normal</button>
-    <button onclick="setContrast(0.5)">Contrast Down</button>
-    <br>
-    <button onclick="setHue(90)">Hue Rotate</button>
-    <button onclick="setHue(0)">Hue Reset</button>
-    <br>
-    <button onclick="setSaturation(2)">Saturation Up</button>
-    <button onclick="setSaturation(1)">Saturation Normal</button>
-    <button onclick="setSaturation(0.5)">Saturation Down</button>
-    <br>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+  <div class="heads">
+    <div id="exitBtn">
+      <svg onclick="window.location.href='../home.html'" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M6 21q-.825 0-1.413-.588T4 19v-9q0-.475.213-.9t.587-.7l6-4.5q.275-.2.575-.3T12 3.5q.325 0 .625.1t.575.3l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-4v-7h-4v7H6Z"/></svg>
+    </div>
+    <div class="title">
+      <h2>VIDEO EDITOR</h2>
+      <h2 id="photo_name">VIDEO</h2>
+    </div>
+  </div>
+    <div class="container">
+
+     <div class="videoDivInput">
+      <input type="file" id="videoInput" name="selectedImage"  accept="video/*">
+     </div>
+     <div class="image_holder">
+      <video id="video" ></video>
+    </div>
+
+
+      <div class="buttonsBtn">
+        <div class="controls">
+          <li onclick="setTime(0)"><i class='bx bx-skip-previous-circle'></i></li>
+          <li onclick="togglePlayPause()"><i class='bx bx-play-circle' ></i></li>
+          <li onclick="toggleMute()"><i class='bx bx-volume-mute' ></i></li>
+          <li onclick="toggleSpeed()"><i class='bx bx-timer' ></i></li>
+          <li onclick="toggleLoop()"><i class='bx bx-repeat' ></i></li>
+          <li onclick="setTime(video.duration)"><i class='bx bx-skip-next-circle' ></i></li>
+  
+        </div>
+  
+  
+  
+  
+        <div class="tools">
+          <div class="entry_tool">
+            <li><i class='bx bx-brightness-half' ></i></li>
+            <input type="range" id="brightnessRange" min="0" max="5" step="0.1" value="1">
+            <button onclick="setBrightness()">Apply</button>
+          </div>
+      
+          <div class="entry_tool">
+            <li><i class='bx bx-palette' ></i></li>
+            <input type="range" id="contrastRange" min="0" max="5" step="0.1" value="1">
+            <button onclick="setContrast()">Apply</button>
+          </div>
+          
+      
+          <div class="entry_tool">
+            <li><i class='bx bx-brush'></i></li>
+            <input type="range" id="hueRange" min="0" max="360" step="1" value="0">
+            <button onclick="setHue()">Apply</button>
+          </div>
+      
+          <div class="entry_tool">
+            <li><i class='bx bx-color-fill' ></i></li>
+            <input type="range" id="saturationRange" min="0" max="5" step="0.1" value="1">
+            <button onclick="setSaturation()">Apply</button>
+          </div>
+        </div>
+      </div>
+
+  
+
+    
+    <div class="download">
+      <input type="range" id="seekBar" min="0" max="100" value="0">
+      <li onclick="downloadVideo()"><i class='bx bx-download' ></i></li>
+    </div>
+    </div>
     <script>
       let videoInput = document.getElementById("videoInput");
       let video = document.getElementById("video");
       let seekBar = document.getElementById("seekBar");
-      let volumeBar = document.getElementById("volumeBar");
+      let brightnessRange = document.getElementById("brightnessRange");
+      let contrastRange = document.getElementById("contrastRange");
+      let hueRange = document.getElementById("hueRange");
+      let saturationRange = document.getElementById("saturationRange");
+      let photo_name = document.getElementById("photo_name");
+      let playState = false;
+      let muteState = false;
+      let speedState = 1;
+      let loopState = false;
 
-      function play() {
-        video.play();
+      function handleVideoInput() {
+        const file = videoInput.files[0];
+        const url = URL.createObjectURL(file);
+        video.src = url;
+        photo_name.textContent = file.name
+        videoInput.style.display = "none"
+        
       }
 
-      function pause() {
-        video.pause();
+      videoInput.addEventListener("change", handleVideoInput);
+
+      function togglePlayPause() {
+        playState = !playState;
+        if (playState) {
+          video.play();
+        } else {
+          video.pause();
+        }
       }
 
-      function mute() {
-        video.muted = true;
+      function toggleMute() {
+        muteState = !muteState;
+        video.muted = muteState;
       }
 
-      function unmute() {
-        video.muted = false;
+      function toggleSpeed() {
+        speedState = speedState === 1 ? 2 : 1;
+        video.playbackRate = speedState;
       }
 
-      function setSpeed(speed) {
-        video.playbackRate = speed;
+      function toggleLoop() {
+        loopState = !loopState;
+        video.loop = loopState;
       }
-
-      function setLoop(loop) {
-        video.loop = loop;
-      }
-
       function setTime(time) {
-        video.currentTime = time;
-      }
+    video.currentTime = time;
+  }
 
-      function setBrightness(value) {
-        video.style.filter = "brightness(" + value + ")";
-      }
+  function setBrightness() {
+    const value = brightnessRange.value;
+    video.style.filter = `brightness(${value})`;
+  }
 
-      function setContrast(value) {
-        video.style.filter = "contrast(" + value + ")";
-      }
+  function setContrast() {
+    const value = contrastRange.value;
+    video.style.filter = `contrast(${value})`;
+  }
 
-      function setHue(value) {
-  video.style.filter = "hue-rotate(" + value + "deg)";
-}
+  function setHue() {
+    const value = hueRange.value;
+    video.style.filter = `hue-rotate(${value}deg)`;
+  }
 
-function setSaturation(value) {
-  video.style.filter = "saturate(" + value + ")";
-}
+  function setSaturation() {
+    const value = saturationRange.value;
+    video.style.filter = `saturate(${value})`;
+  }
 
-videoInput.addEventListener("change", function() {
-  const file = this.files[0];
-  const fileURL = URL.createObjectURL(file, { crossOrigin: "anonymous" });
-  video.src = fileURL;
-  video.onloadedmetadata = function() {
-    seekBar.max = video.duration;
+  function updateSeekBar() {
+    seekBar.value = (video.currentTime / video.duration) * 100;
+  }
+
+  function updateVolumeBar() {
     volumeBar.value = video.volume;
   }
-});
 
-seekBar.addEventListener("input", function() {
-  video.currentTime = seekBar.value;
-});
+  function seek() {
+    const time = (seekBar.value / 100) * video.duration;
+    video.currentTime = time;
+  }
 
-volumeBar.addEventListener("input", function() {
-  video.volume = volumeBar.value;
-});
+  function setVolume() {
+    video.volume = volumeBar.value;
+  }
 
-video.addEventListener("timeupdate", function() {
-  seekBar.value = video.currentTime;
-});
+  function downloadVideo() {
+  const a = document.createElement("a");
+  document.body.appendChild(a);
+  a.style = "display: none";
 
-video.addEventListener("ended", function() {
-  video.currentTime = 0;
-  video.pause();
-});
+  const stream = video.captureStream();
+  const recorder = new MediaRecorder(stream);
+  const chunks = [];
 
+  recorder.ondataavailable = e => chunks.push(e.data);
+  recorder.onstop = () => {
+    const blob = new Blob(chunks, { type: "video/mp4" });
+    const url = window.URL.createObjectURL(blob);
+    a.href = url;
+    a.download = "edited-video.mp4";
+    a.click();
+    window.URL.revokeObjectURL(url);
+  };
+
+  recorder.start();
+  video.play();
+  setTimeout(() => {
+    recorder.stop();
+  }, 1000);
+}
+
+  video.addEventListener("timeupdate", updateSeekBar);
+  seekBar.addEventListener("change", seek);
+  brightnessRange.addEventListener("change", setBrightness);
+  contrastRange.addEventListener("change", setContrast);
+  hueRange.addEventListener("change", setHue);
+  saturationRange.addEventListener("change", setSaturation);
 </script>
-</body>
+  </body>
 </html>
-

@@ -4,7 +4,7 @@ html,body{
     height: 100%;
     width: 100vw;
     overflow: hidden;
-    /* background-color: #16181F; */
+    background-color: #16181F;
 }
 .container{
     margin: auto;

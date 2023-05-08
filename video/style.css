@@ -1,0 +1,202 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #16181F; 
+    height: 100vh;
+    width: 100vw;
+    color: white;
+}
+.container{
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    position: relative;
+    top: -4em;
+}
+/* upload */
+.choose_image {
+	width: 70%;
+	height: 200px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.upload_img_box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+    position: relative;
+    z-index: 100;
+}
+
+p#hint {
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 1.2em;
+}
+
+.upload_img_box i {
+	font-size: 5em;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+#videoInput {
+	/* display: none; */
+    position: relative;
+    z-index: 1;
+}
+
+/*image holder part*/
+.image_holder {
+	position: relative;
+	/* display: none; */
+	width: 100%;
+	height: 80%;
+    padding: 0;
+    margin: 0;
+    top: 3em;
+    
+}
+
+.image_holder video {
+	width: 100%;
+	height: 70%;
+	border-radius: 15px;
+}
+
+.playbtn{
+    display: block;
+}
+
+/* .controls  */
+.controls{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.controls li{
+    list-style-type: none;;
+    color: white;
+    font-size: 2em;
+  
+}
+
+ /* tools */ 
+
+.entry_tool{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.entry_tool button{
+    background-color: #16181F;
+    border: none;
+    color: white;
+}
+
+.entry_tool li  {
+    list-style-type: none;
+    color:white;
+    cursor: pointer;
+
+}
+.entry_tool li i{
+    color:white;
+    font-size: 2em;
+
+}
+
+.buttonsBtn{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+
+/* download */
+.download{
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    top: 61%;
+}
+.download li{
+    list-style-type: none;
+    font-size: 2em;
+}
+
+
+/* video div input */
+.videoDivInput{
+    position: absolute;
+    width: 100%;
+    margin: auto;
+    top: 50%;
+    left: 15%;
+}
+
+
+/* heads */
+/* heads */
+.heads{
+	position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    position: relative;
+    margin: auto;
+    margin-top: .3em;
+	height: 3em;
+	align-items: center;
+	z-index: 1;
+
+}
+.title{
+    color: #555;
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    align-items: center;
+    width: 80%;
+	background-color: #0a142cdb;
+
+}
+.title h2{
+    font-size: .8em;
+}
+/*  Exit Button */
+#exitBtn{
+    width: 3em;
+	height: 100%;
+    border-radius: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	background-color: #0a142cdb;
+
+}
+#exitBtn svg{
+    height: 20px;
+    width: 20px;
+}
+#exitBtn svg path{
+    fill: #555;
+}
+
+@media (min-width: 708px ){
+    .container,.heads{
+        position: relative;
+        width: 25em;
+    }
+    .container{
+        position: relative;
+        top: 5em;
+    }
+
+}
