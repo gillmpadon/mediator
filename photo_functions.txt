@@ -1,0 +1,20 @@
+   let brightValShow = document.querySelector('#brightVal');
+   let blurValShow = document.querySelector('#blurVal');
+   let greyValShow = document.querySelector('#greyVal');
+   let hueValShow = document.querySelector('#hueVal');
+   let saturationValShow = document.querySelector('#saturationVal');
+
+   let brightVal = bright.value;
+   let greyVal = grey.value;
+   let blurVal = blur.value;
+   let hueVal = hue.value;
+   let satuVal = saturation.value;
+
+   brightValShow.innerHTML = brightVal;
+   blurValShow.innerHTML = blurVal;
+   greyValShow.innerHTML = greyVal;
+   hueValShow.innerHTML = hueVal;
+   saturationValShow.innerHTML = satuVal;
+
+   image.style.filter = 'grayscale(' + greyVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) saturate(' + satuVal + ')';
+   context.filter = 'grayscale(' + greyVal + '%) hue-rotate(' + hueVal + 'deg) brightness(' + brightVal + '%) blur(' + blurVal + 'px) saturate(' + satuVal + ')';

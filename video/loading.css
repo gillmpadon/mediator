@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #16181F;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.modality{
+    margin: auto;
+    border: .5em dashed white;
+    width: 80%;
+    margin-top: 7em;
+    color: white;
+    text-align: center;
+    border-radius: 150%;
+    height: 40%;
+    line-height: 0;
+    position: relative;
+    z-index: 1;
+
+}
+
+h1,h2{
+    margin-top: 3em;
+}
+.modality p{
+    position:relative;
+    top:1em;
+}
+
+
+@media (min-width: 708px ){
+    .modality{
+        position: relative;
+        width: 25em;
+    }
+    .modality{
+        position: relative;
+        top: 5em;
+    }
+
+}
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.14.3/video.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/glfx.js/0.0.4/glfx.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+</head>
+<body>
+    <video id="originalVideo" class="video-js vjs-default-skin" controls preload="auto"></video>
+<input type="range" id="brightnessSlider" min="0" max="2" step="0.01" value="1" />
+<button id="downloadButton">Download Video</button>
+<script>
+    var player = videojs('../news/news_1 - Trim.mp4');
+var canvas = document.createElement('canvas');
+var ctx = canvas.getContext('2d');
+var texture, video;
+
+player.on('loadeddata', function() {
+    var videoElem = document.getElementById('originalVideo_html5_api');
+    video = fx.video(videoElem);
+    canvas.width = videoElem.videoWidth;
+    canvas.height = videoElem.videoHeight;
+    texture = fx.texture(videoElem);
+});
+
+player.on('timeupdate', function() {
+    if(!texture || !video) return;
+    
+    var brightness = document.getElementById('brightnessSlider').value;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    texture.loadContentsOf(video);
+    
+    fx(texture)
+        .brightnessContrast(brightness-1, 0)
+        .update();
+    
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+});
+
+downloadButton.addEventListener('click', function() {
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        canvas.width = videoOutput.videoWidth;
+        canvas.height = videoOutput.videoHeight;
+        context.filter = 'brightness(' + brightnessRange.value + '%)';
+        context.drawImage(videoOutput, 0, 0, canvas.width, canvas.height);
+        canvas.toBlob(function(blob) {
+          recordedChunks.push(blob);
+          if (videoOutput.currentTime >= videoOutput.duration) {
+            var videoBlob = new Blob(recordedChunks, { type: 'video/mp4' });
+            var url = URL.createObjectURL(videoBlob);
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = 'edited_video.mp4';
+            link.click();
+            URL.revokeObjectURL(url);
+          }
+        }, 'video/mp4');
+      });
+</script>
+</body>
+</html>

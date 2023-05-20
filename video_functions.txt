@@ -1,0 +1,36 @@
+ function setBrightness() {
+    const value = brightnessRange.value;
+    video.style.filter = `brightness(${value})`;
+  }
+
+  function setContrast() {
+    const value = contrastRange.value;
+    video.style.filter = `contrast(${value})`;
+  }
+
+  function setHue() {
+    const value = hueRange.value;
+    video.style.filter = `hue-rotate(${value}deg)`;
+  }
+
+  function setSaturation() {
+    const value = saturationRange.value;
+    video.style.filter = `saturate(${value})`;
+  }
+
+  function updateSeekBar() {
+    seekBar.value = (video.currentTime / video.duration) * 100;
+  }
+
+  function updateVolumeBar() {
+    volumeBar.value = video.volume;
+  }
+
+  function seek() {
+    const time = (seekBar.value / 100) * video.duration;
+    video.currentTime = time;
+  }
+
+  function setVolume() {
+    video.volume = volumeBar.value;
+  }

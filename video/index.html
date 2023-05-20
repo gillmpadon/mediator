@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="loading.css">
     <title>Document</title>
 </head>
 <body>
@@ -75,9 +76,16 @@
     
     <div class="download">
       <input type="range" id="seekBar" min="0" max="100" value="0">
-      <li onclick="downloadVideo()"><i class='bx bx-download' ></i></li>
+      <li onclick="startUpdatingPercentage()"><i class='bx bx-download' ></i></li>
     </div>
     </div>
+    <div class="modality">
+      <div id="percentage">
+          <h1>Exporting</h1>
+          <p id="exportName"></p>
+          <h2>0%</h2>
+      </div>
+  </div>
     <script>
       let videoInput = document.getElementById("videoInput");
       let video = document.getElementById("video");
@@ -91,12 +99,13 @@
       let muteState = false;
       let speedState = 1;
       let loopState = false;
-
+      let filenameVideo = ""
       function handleVideoInput() {
         const file = videoInput.files[0];
         const url = URL.createObjectURL(file);
         video.src = url;
         photo_name.textContent = file.name
+        filenameVideo = file.name
         videoInput.style.display = "none"
         
       }
@@ -188,9 +197,40 @@
 
   recorder.start();
   video.play();
-  // setTimeout(() => {
-  //   recorder.stop();
-  // }, 1000);
+  setTimeout(() => {
+    recorder.stop();
+  }, 1000);
+}
+
+const headDiv = document.querySelector('.heads')
+const containerDiv = document.querySelector('.container')
+const update = document.querySelector('.modality')
+update.style.display = 'none'
+
+function startUpdatingPercentage() {
+  headDiv.style.display = 'none'
+  containerDiv.style.display = 'none'
+  update.style.display = 'block'
+
+    let percentage = 0;
+    let time = 50000; 
+    let increment = 1; 
+    let delay = time / (10 / increment);
+    let percentageElement = document.querySelector('#percentage h2');
+    let exportnameP = document.getElementById('exportName'); 
+    exportnameP.textContent= filenameVideo
+    function updatePercentage() {
+        percentage += increment;
+        percentageElement.innerText = percentage + '%';
+
+        if (percentage < 100) {
+            setTimeout(updatePercentage, delay);
+        }else{
+          downloadVideo();
+        }
+    }
+
+    setTimeout(updatePercentage, delay);
 }
 
   video.addEventListener("timeupdate", updateSeekBar);

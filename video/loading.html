@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+    <link rel="stylesheet" href="loading.css">
+</head>
+<body>
+    <div class="modality">
+        <div id="percentage">
+            <h1>Exporting</h1>
+            <h2>0%</h2>
+        </div>
+    </div>
+    <script>
+        let percentage = 0;
+        let time = 50000; 
+        let increment = 1; 
+        let delay = time / (10 / increment);
+        let percentageElement = document.querySelector('#percentage h2');
+        function updatePercentage() {
+            percentage += increment;
+            percentageElement.innerText = percentage + '%';
+    
+            if (percentage < 100) {
+                setTimeout(updatePercentage, delay);
+            }
+        }
+    
+        setTimeout(updatePercentage, delay);
+    </script>
+</body>
+</html>
